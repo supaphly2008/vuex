@@ -1,9 +1,13 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar @show-cart-modal="showModal = true" />
     <div class="app__product-container">
       <Card v-for="product in products" :key="product.id" :product="product" />
     </div>
+    <Modal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">custom header</h3>
+    </Modal>
+    <button @click="showModal = true">show</button>
   </div>
 </template>
 
@@ -11,12 +15,14 @@
 import products from "./data/products";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
+import Modal from "./components/Modal";
 export default {
   name: "App",
-  components: { NavBar, Card },
+  components: { NavBar, Card, Modal },
   data() {
     return {
       products: [],
+      showModal: false,
     };
   },
   computed: {
@@ -31,7 +37,6 @@ export default {
   },
   created() {
     // simulate api call
-    // console.log(this.$store.getters.getCart);
     this.products = products;
   },
 };
@@ -49,6 +54,5 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  /* justify-content: space-between; */
 }
 </style>

@@ -3,7 +3,7 @@
     <p class="navbar__heading">My shopping cart</p>
     <div class="navbar__cart">
       <p class="navbar__cart__total">Subtotal: {{ getCart.total }}</p>
-      <i class="fas fa-cart-plus"></i>
+      <i class="fas fa-cart-plus" @click="$emit('show-cart-modal')"></i>
       <span class="navbar__cart__count">{{ getCart.count }}</span>
     </div>
   </div>
@@ -31,6 +31,10 @@ export default {
 }
 .navbar__heading {
   flex: 1;
+}
+
+.navbar__cart > i {
+  cursor: pointer;
 }
 
 .navbar__cart__count {
