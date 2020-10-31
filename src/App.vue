@@ -5,9 +5,8 @@
       <Card v-for="product in products" :key="product.id" :product="product" />
     </div>
     <Modal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">custom header</h3>
+      <h3 slot="header">My Cart</h3>
     </Modal>
-    <button @click="showModal = true">show</button>
   </div>
 </template>
 
