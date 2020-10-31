@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { ADD_TO_CART } from "./mutaion-types";
 
 Vue.use(Vuex);
 
@@ -9,21 +10,15 @@ export const store = new Vuex.Store({
     total: 0
   },
   mutations: {
-    addToCart(state, item) {
+    [ADD_TO_CART](state, item) {
       state.count += 1;
       state.total += item.price;
     }
-    // increment(state, payload) {
-    //   state.count += payload;
-    // }
   },
   actions: {
     addToCart({ commit }, item) {
-      commit("addToCart", item);
+      commit(ADD_TO_CART, item);
     }
-    // increment({ commit }, payload) {
-    //   commit("increment", payload);
-    // }
   },
   getters: {
     getCart(state) {
