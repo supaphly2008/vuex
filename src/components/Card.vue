@@ -1,6 +1,7 @@
 <template>
   <div class="card">
     <h2 class="card__title">{{ product.title }}</h2>
+    <img :src="product.image" alt="" class="card__image" />
     <p class="card__price">${{ product.price }}</p>
     <button @click="addToCart(product)">Add to Cart</button>
   </div>
@@ -10,9 +11,12 @@
 export default {
   props: {
     product: {
-      id: String,
-      name: String,
+      id: Number,
       price: Number,
+      category: String,
+      description: String,
+      image: String,
+      title: String,
     },
   },
   methods: {
@@ -33,7 +37,15 @@ export default {
 }
 .card__title {
   font-size: 16px;
+  margin-bottom: 20px;
 }
+
+.card__image {
+  width: 60%;
+  height: 50%;
+  object-fit: contain;
+}
+
 .card__price {
   margin: 10px 0;
 }

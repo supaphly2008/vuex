@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// import products from "./data/products";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
@@ -20,7 +19,6 @@ export default {
   components: { NavBar, Card, Modal },
   data() {
     return {
-      // products: [],
       showModal: false,
     };
   },
@@ -56,6 +54,7 @@ export default {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  padding: 0 20px;
 }
 </style>

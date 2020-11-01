@@ -3,7 +3,7 @@
     <p class="navbar__heading">My shopping cart</p>
     <div class="navbar__cart">
       <p class="navbar__cart__total">
-        Subtotal: {{ getCart.total.toFixed(2) }}
+        Subtotal: ${{ getCart.total.toFixed(2) }}
       </p>
       <i class="fas fa-cart-plus" @click="$emit('show-cart-modal')"></i>
       <span class="navbar__cart__count">({{ getCart.count }})</span>
