@@ -34,10 +34,11 @@ export default {
 <style scoped>
 .card {
   text-align: center;
-  max-width: 300px;
+  width: 300px;
   border: 1px solid darkgray;
   border-radius: 5px;
   padding: 15px 10px;
+  min-height: 400px;
 }
 .card__title {
   font-size: 16px;
@@ -45,7 +46,7 @@ export default {
 }
 
 .card__image {
-  width: 60%;
+  width: 50%;
   height: 50%;
   object-fit: contain;
 }

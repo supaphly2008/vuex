@@ -23,6 +23,8 @@ export default {
 
 <style scoped>
 .navbar {
+  position: fixed;
+  top: 0;
   padding: 0 10px;
   color: #fff;
   background-color: rgb(73, 76, 255);
