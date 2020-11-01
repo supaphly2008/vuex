@@ -1,7 +1,7 @@
 <template>
   <div class="card">
-    <h2>{{ product.name }}</h2>
-    <p>NT${{ product.price }}</p>
+    <h2 class="card__title">{{ product.title }}</h2>
+    <p class="card__price">${{ product.price }}</p>
     <button @click="addToCart(product)">Add to Cart</button>
   </div>
 </template>
@@ -26,9 +26,15 @@ export default {
 <style scoped>
 .card {
   text-align: center;
-  width: 200px;
+  max-width: 300px;
   border: 1px solid darkgray;
   border-radius: 5px;
-  padding: 15px 0;
+  padding: 15px 10px;
+}
+.card__title {
+  font-size: 16px;
+}
+.card__price {
+  margin: 10px 0;
 }
 </style>

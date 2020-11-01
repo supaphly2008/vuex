@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import products from "./data/products";
+// import products from "./data/products";
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
@@ -20,13 +20,16 @@ export default {
   components: { NavBar, Card, Modal },
   data() {
     return {
-      products: [],
+      // products: [],
       showModal: false,
     };
   },
   computed: {
     showCount() {
       return this.$store.getters.getCount;
+    },
+    products() {
+      return this.$store.getters.getAllProducts;
     },
   },
   methods: {
@@ -35,8 +38,9 @@ export default {
     },
   },
   created() {
-    // simulate api call
-    this.products = products;
+    if (this.products.length === 0) {
+      this.$store.dispatch("getAllProducts");
+    }
   },
 };
 </script>
