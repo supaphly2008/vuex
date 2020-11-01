@@ -3,11 +3,12 @@
     <h2 class="card__title">{{ product.title }}</h2>
     <img :src="product.image" alt="" class="card__image" />
     <p class="card__price">${{ product.price }}</p>
-    <button @click="addToCart(product)">Add to Cart</button>
+    <Button @click.native="addToCart(product)">Add to Cart</Button>
   </div>
 </template>
 
 <script>
+import Button from "./Button";
 export default {
   props: {
     product: {
@@ -18,6 +19,9 @@ export default {
       image: String,
       title: String,
     },
+  },
+  components: {
+    Button,
   },
   methods: {
     addToCart(product) {
