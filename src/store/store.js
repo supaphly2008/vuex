@@ -39,7 +39,8 @@ export const store = new Vuex.Store({
   },
   getters: {
     getCart(state) {
-      return { ...state };
+      const { total, count } = state;
+      return { total, count };
     },
     getAllProducts(state) {
       return state.products;
