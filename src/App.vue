@@ -1,12 +1,19 @@
 <template>
   <div id="app">
     <NavBar @show-cart-modal="showModal = true" />
-    <div class="app__product-container">
-      <Card v-for="product in products" :key="product.id" :product="product" />
-    </div>
-    <Modal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">My Cart</h3>
-    </Modal>
+    <Spinner class="app__spinner" v-bind="spinnerConfig" v-if="isLoading" />
+    <template v-else>
+      <div class="app__product-container">
+        <Card
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+        />
+      </div>
+      <Modal v-if="showModal" @close="showModal = false">
+        <h3 slot="header">My Cart</h3>
+      </Modal>
+    </template>
   </div>
 </template>
 
@@ -14,12 +21,18 @@
 import NavBar from "./components/NavBar";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
+import Spinner from "vue-simple-spinner";
+
 export default {
   name: "App",
-  components: { NavBar, Card, Modal },
+  components: { NavBar, Card, Modal, Spinner },
   data() {
     return {
       showModal: false,
+      spinnerConfig: {
+        size: "medium",
+        message: "Fetching Products...",
+      },
     };
   },
   computed: {
@@ -28,6 +41,9 @@ export default {
     },
     products() {
       return this.$store.getters.getAllProducts;
+    },
+    isLoading() {
+      return this.$store.getters.isLoading;
     },
   },
   methods: {
@@ -49,12 +65,19 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  height: 100%;
 }
 .app__product-container {
-  margin-top: 20px;
+  margin-top: 80px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   padding: 0 20px;
+}
+
+.app__spinner {
+  position: relative;
+  top: 40%;
 }
 </style>
