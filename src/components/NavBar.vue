@@ -4,7 +4,7 @@
     <div class="navbar__cart">
       <p class="navbar__cart__total">Subtotal: {{ getCart.total }}</p>
       <i class="fas fa-cart-plus" @click="$emit('show-cart-modal')"></i>
-      <span class="navbar__cart__count">{{ getCart.count }}</span>
+      <span class="navbar__cart__count">({{ getCart.count }})</span>
     </div>
   </div>
 </template>
